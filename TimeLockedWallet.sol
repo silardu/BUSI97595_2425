@@ -18,6 +18,7 @@ contract TimeLockedWallet {
     function deposit() external payable {}
 
     // Function to withdraw funds after the unlock date
+    // Require reverts the entire state change, and aborts the whole process, it is more gas efficient and safer than an "if" function 
     function withdraw() external {
         require(block.timestamp >= unlockDate, "Funds are locked");
         require(msg.sender == beneficiary, "Not authorized");
@@ -25,8 +26,8 @@ contract TimeLockedWallet {
     }
 
     // Function to view the balance of the contract
-    function getBalance() external view returns (uint256) {
-        return address(this).balance;
+    function getBalance() external view returns(uint) {
+        return(address(this).balance);
     }
 }
 
