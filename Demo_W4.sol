@@ -9,7 +9,7 @@ contract Escrow {
 
 
     // Constructor should the escrow contract with the payer, payee, and agreed amount
-    constructor() {
+    constructor(address _payer, address _payee, address _lawyer, uint _amount) {
         payer = _payer;
         payee = _payee;
         lawyer = _lawyer;
